@@ -33,7 +33,7 @@ body {
     list-style-type: none;
     padding-left: 0;
     font-size: 20px; 
-    font-weight: 550;
+    font-weight: 500;
 }
 
 .textnav>li{
@@ -55,13 +55,13 @@ body {
 }
 
 .mainpage img{
-    height: px;
+    height: 347px;
     width: 347px;
 }
 
 .mainpage{
     padding-top: 100px;
-    padding-bottom: 300px;
+    padding-bottom: 200px;
 }
 .maintext{
     color: #749BC2;
@@ -72,13 +72,32 @@ body {
 .subtitle{
     color: #496F94;
     font-size: 22px;
-    max-width: 900px;      /* Максимальная ширина — не больше 1170px */
+    max-width: 1000px;      /* Максимальная ширина — не больше 1170px */
     margin: 0 auto;         /* Отцентрировать по горизонтали */
     padding-left: 20px;     /* Внутренние отступы (по желанию) */
     padding-right: 20px;
     text-align: center;
 }
 
+.list img{
+    height: 347px;
+    width: 347px;
+}
+
+.text {
+    background: #4682A9;
+    color: #FFFBDE;
+    padding: 14px 28px;        /* отступы внутри рамки */
+    border-radius: 50px;
+    font-size: 26px;
+    text-align: center;
+
+    /* Центрирование по горизонтали */
+    display: block;            /* ← обязательно! */
+    max-width: 1100px;
+    margin: 5px auto 0;      /* сверху 225px, по бокам auto → центр */
+    /* padding-left/right НЕ нужно — уже заданы в padding выше */
+}
 
 footer {
     color: #30465A;
