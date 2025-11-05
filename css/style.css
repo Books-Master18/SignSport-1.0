@@ -8,6 +8,8 @@ body {
     width: 220px;
 }
 
+
+
 .header{
     background-color: #4682A9;
     color: #fffdef;              
@@ -52,18 +54,31 @@ body {
     margin-right: 25px;
 }
 
+.mainpage img{
+    height: px;
+    width: 347px;
+}
 
 .mainpage{
-    padding-top: 200px;
+    padding-top: 100px;
     padding-bottom: 300px;
 }
 .maintext{
-    font-size: 44px;
+    color: #749BC2;
+    font-size: 60px;
+    text-align: center
 }
 
 .subtitle{
-    font-size: 18px;
+    color: #496F94;
+    font-size: 22px;
+    max-width: 900px;      /* Максимальная ширина — не больше 1170px */
+    margin: 0 auto;         /* Отцентрировать по горизонтали */
+    padding-left: 20px;     /* Внутренние отступы (по желанию) */
+    padding-right: 20px;
+    text-align: center;
 }
+
 
 footer {
     color: #30465A;
