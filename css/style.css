@@ -4,7 +4,7 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-
+/* -------------------------------------------------- */
 
 /* редактирование логотипа - его размер*/
 .header img{
@@ -40,7 +40,7 @@ body {
     display: flex;
     list-style-type: none;
     padding-left: 0;
-    font-size: 20px; 
+    font-size: 40px; 
     font-weight: 500;
 }
 
