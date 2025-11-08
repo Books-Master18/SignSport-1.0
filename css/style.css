@@ -118,6 +118,8 @@ body {
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
 }
 
+/* -------------------------------------------------- */
+
 .spisok img{
     height: 347px;
     width: 347px;
@@ -125,20 +127,13 @@ body {
     margin: 0 0 5px 5px; /* Отступы вокруг фотографии */
 }
 
-
-.name{
-    color: #406890;
-    font-size: 44px;
-    font-weight: 700;
-    padding: 0; 
-    margin-top: 200px;
-    margin-left: 150px;
-}
-
 .spisok{
     color: #FFFBDE;
     font-size: 30px;
 }
+
+/* -------------------------------------------------- */
+
 .textspisok{
 
     background: #4682A9;
@@ -150,6 +145,19 @@ body {
     margin: 20px auto 0;    
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
 }
+
+/* -------------------------------------------------- */
+
+.name{
+    color: #406890;
+    font-size: 44px;
+    font-weight: 700;
+    padding: 0; 
+    margin-top: 200px;
+    margin-left: 150px;
+}
+
+
 
 .mainpage-2{
     padding-top: 80px;
