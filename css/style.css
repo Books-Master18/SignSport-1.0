@@ -44,7 +44,7 @@ body {
     display: flex;
     list-style-type: none;
     padding-left: 0;
-    font-size: 40px; 
+    font-size: 22px; 
     font-weight: 500;
 }
 
@@ -65,6 +65,7 @@ body {
     margin-right: 25px;
 }
 
+/* -------------------------------------------------- */
 
 .mainpage{
     padding-top: 180px;
