@@ -85,6 +85,8 @@ body {
     text-align: center
 }
 
+/* -------------------------------------------------- */
+
 .subtitle{
     color: #496F94;
     font-size: 22px;
@@ -94,6 +96,8 @@ body {
     padding-right: 20px;
     text-align: center;
 }
+
+/* -------------------------------------------------- */
 
 .list img{
     height: 347px;
