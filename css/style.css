@@ -82,7 +82,19 @@ body {
     height: 347px;
     width: 347px;
 }
+.spisok img{
+    height: 347px;
+    width: 347px;
+    float: right; /* Выравнивание по правому краю */
+    margin: 0 0 5px 5px; /* Отступы вокруг фотографии */
+    padding-top: 180px;
+    padding-bottom: 200px;
+}
 
+.AI{
+    padding-top: 180px;
+    padding-bottom: 200px;
+}
 .text {
     background: #4682A9;
     color: #FFFBDE;
@@ -101,7 +113,12 @@ body {
 .name{
     color: #406890;
     font-size: 44px;
+    font-weight: 700;
 }
+.spisok{
+    color: #59758A;
+}
+
 footer {
     color: #30465A;
     padding: 20px 0;
