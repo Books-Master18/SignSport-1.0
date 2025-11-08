@@ -4,7 +4,7 @@ body {
 }
 
 .header img{
-    height: px;
+    height: 100%;
     width: 220px;
 }
 
@@ -15,6 +15,7 @@ body {
     color: #fffdef;              
     padding: 6px 0;
     width: 100%;
+    position: fixed;
 }
 
 .navigation{
@@ -23,8 +24,6 @@ body {
     justify-content: space-between;
     padding-top: 5px;
     padding-bottom: 5px;
-
-
 }
 
 .textnav
@@ -60,7 +59,7 @@ body {
 }
 
 .mainpage{
-    padding-top: 100px;
+    padding-top: 180px;
     padding-bottom: 200px;
 }
 .maintext{
@@ -99,6 +98,10 @@ body {
     /* padding-left/right НЕ нужно — уже заданы в padding выше */
 }
 
+.name{
+    color: #406890;
+    font-size: 44px;
+}
 footer {
     color: #30465A;
     padding: 20px 0;
