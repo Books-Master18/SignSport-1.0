@@ -1,20 +1,29 @@
+/* тело сайта. Цвет фона и шрифт для всего сайта*/
 body {
     background-color: #fffdef;
     font-family: "Montserrat", sans-serif;
 }
 
+
+
+/* редактирование логотипа - его размер*/
 .header img{
     height: 100%;
     width: 220px;
 }
 
+
+/*создание баннера*/
 .header{
     background-color: #4682A9;
     color: #fffdef;              
     padding: 6px 0;
     width: 100%;
     position: fixed;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
 }
+
+/*пространство для текста на баннере*/
 
 .navigation{
     display: flex;
@@ -23,6 +32,8 @@ body {
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+/*оформление текста на баннере*/
 
 .textnav
 {
@@ -50,15 +61,17 @@ body {
     margin-right: 25px;
 }
 
+
+.mainpage{
+    padding-top: 180px;
+    padding-bottom: 120px;
+}
+
 .mainpage img{
     height: 347px;
     width: 347px;
 }
 
-.mainpage{
-    padding-top: 180px;
-    padding-bottom: 200px;
-}
 .maintext{
     color: #749BC2;
     font-size: 60px;
@@ -80,17 +93,6 @@ body {
     width: 347px;
 }
 
-.spisok img{
-    height: 347px;
-    width: 347px;
-    float: right; /* Выравнивание по правому краю */
-    margin: 0 0 5px 5px; /* Отступы вокруг фотографии */
-    padding-top: 50px;
-    padding-bottom: 200px;
-}
-
-
-
 .text {
     background: #4682A9;
     color: #FFFBDE;
@@ -100,33 +102,42 @@ body {
     text-align: center;
     /* Центрирование по горизонтали */
     display: block;            /* ← обязательно! */
-    max-width: 1300px;
+    max-width: 1250px;
     margin: 25px auto 0;      /* сверху 225px, по бокам auto → центр */
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
 }
+
+.spisok img{
+    height: 347px;
+    width: 347px;
+    float: right; /* Выравнивание по правому краю */
+    margin: 0 0 5px 5px; /* Отступы вокруг фотографии */
+}
+
 
 .name{
     color: #406890;
     font-size: 44px;
     font-weight: 700;
     padding: 0; 
+    margin-top: 200px;
     margin-left: 150px;
-
 }
 
 .spisok{
     color: #FFFBDE;
     font-size: 30px;
 }
-.textlist{
+.textspisok{
 
     background: #4682A9;
-    padding: 20px 15px;
-    border-radius: 50px;
+    padding: 30px 15px;
+    border-radius: 35px;
     text-align: left;
     display: block;         
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 20px auto 0;    
-
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
 }
 
 .mainpage-2{
