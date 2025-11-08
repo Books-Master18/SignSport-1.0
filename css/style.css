@@ -137,17 +137,20 @@ body {
     width: 347px;
     float: right; /* Выравнивание по правому краю */
     margin: 0 0 5px 5px; /* Отступы вокруг фотографии */
+    top: 100px;
+    right: 50px;
+
 }
 
 .spisok{
-    color: #FFFBDE;
+    color: #30465A;
     font-size: 30px;
 }
 
 /* -------------------------------------------------- */
 
 .textspisok{
-    background: #4682A9;
+    background: linear-gradient(to bottom right,#AAD4E6, #4682A9);
     padding: 30px 15px;
     border-radius: 35px;
     text-align: left;
@@ -160,13 +163,39 @@ body {
 /* -------------------------------------------------- */
 
 
+.AI img{
+    padding-left: 50px;
+    
+}
 
 .AI{
     padding-top: 220px;
     padding-bottom: 200px;
     
+    
 }
 
+.arrow img{
+    height: 150px;
+    width: 170px;
+    top: 50px;
+    left: 50px;
+}
+
+.butten{
+    background: #4682A9;
+    color: #FFFBDE;
+    padding: 20px;        /* отступы внутри рамки */
+    border-radius: 15px;
+    font-size: 30px;
+    text-align: center;
+    /* Центрирование по горизонтали */
+    display: block;            /* ← обязательно! */
+    max-width: 500px;
+    font-weight: 600;
+    margin: 25px auto 0;      /* сверху 225px, по бокам auto → центр */
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+}
 
 /* -------------------------------------------------- */
 
