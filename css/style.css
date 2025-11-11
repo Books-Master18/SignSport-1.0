@@ -162,16 +162,25 @@ body {
 /* -------------------------------------------------- */
 
 
-.AI img{
-    padding-left: 50px;
-    
+.AI {
+  display: flex;
+  align-items: flex-start; 
+  padding-top: 220px;
+  padding-bottom: 200px;
 }
 
-.AI{
-    padding-top: 220px;
-    padding-bottom: 200px;
-    
-    
+.AI img {
+  width: 370px;
+  height: 450px;
+  margin-left: 50px;
+}
+
+.AI-text {
+    margin-right: 50px;
+  margin-left: auto;
+  text-align: center;
+  font-size: 36px;
+  color: #30465A;
 }
 
 .arrow img{
