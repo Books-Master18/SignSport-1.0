@@ -99,12 +99,12 @@ body {
 
 /* -------------------------------------------------- */
 
-.tennis{
-    height: 347px;
+.tennis {
     width: 347px;
-    position: absolute;
-    top: calc(60px + 1140px);
-    left: 150px;
+    height: 347px;
+    margin-top: 4px; /* или лучше — не задавать фиксированное значение */
+    margin-left: 150px;
+    display: block;
 }
 
 /*текст в рамке*/
@@ -135,13 +135,14 @@ body {
 
 /* -------------------------------------------------- */
 
-.athletic{
-    position: absolute;
-    right: 0;
-    height: 347px;
+.athletic {
     width: 347px;
-    top: 1650px;
-
+    height: 347px;
+    display: block;
+    margin-left: auto;     /* отталкивает от левого края */
+    margin-right: 30px;       /* прижимает к правому */
+    /* margin-top по желанию, например: */
+    margin-top: -240px;
 }
 
 .spisok{
