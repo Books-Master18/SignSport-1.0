@@ -102,8 +102,8 @@ body {
 .tennis {
     width: 347px;
     height: 347px;
-    margin-top: 4px; /* или лучше — не задавать фиксированное значение */
-    margin-left: 150px;
+    margin-top: -10px; /* или лучше — не задавать фиксированное значение */
+    margin-left: 80px;
     display: block;
 }
 
@@ -111,14 +111,14 @@ body {
 .text {
     background: #4682A9;
     color: #FFFBDE;
-    padding: 20px 28px;        /* отступы внутри рамки */
+    padding: 18px 26px;        /* отступы внутри рамки */
     border-radius: 62px;
-    font-size: 30px;
+    font-size: 28px;
     text-align: center;
     /* Центрирование по горизонтали */
     display: block;            /* ← обязательно! */
-    max-width: 1100px;
-    margin: 25px auto 0;      /* сверху 225px, по бокам auto → центр */
+    max-width: 1250px;
+    margin: -25px auto 0;    
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
 }
 
@@ -129,7 +129,7 @@ body {
     font-size: 46px;
     font-weight: 700;
     padding: 0; 
-    margin-top: 200px;
+    margin-top: 150px;
     margin-left: 70px;
 }
 
