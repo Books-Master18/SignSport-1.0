@@ -129,7 +129,7 @@ body {
     font-size: 46px;
     font-weight: 700;
     padding: 0; 
-    margin-top: 150px;
+    margin-top: 100px;
     margin-left: 70px;
 }
 
@@ -142,7 +142,7 @@ body {
     margin-left: auto;     /* отталкивает от левого края */
     margin-right: 30px;       /* прижимает к правому */
     /* margin-top по желанию, например: */
-    margin-top: -240px;
+    margin-top: -280px;
 }
 
 .spisok{
@@ -151,16 +151,16 @@ body {
 }
 
 /* -------------------------------------------------- */
-
-.textspisok{
-    background: linear-gradient(to bottom right,#AAD4E6, #4682A9);
-    padding: 30px 15px;
+.textspisok {
+    background: linear-gradient(to bottom right, #AAD4E6, #4682A9), url('.../images/nomerspisok.png') no-repeat center center;
+    background-size: cover; /* или contain, или конкретные размеры */
+    padding: 30px 15px 30px 45px; /* увеличено левое padding для сдвига текста */
     border-radius: 35px;
     text-align: left;
-    display: block;         
-    max-width: 900px;  
+    display: block;
+    max-width: 900px;
     margin: 18px 0 0 150px;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 /* -------------------------------------------------- */
