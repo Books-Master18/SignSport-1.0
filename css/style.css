@@ -151,67 +151,72 @@ body {
 }
 
 /* -------------------------------------------------- */
+
 .textspisok {
-    background: linear-gradient(to bottom right, #AAD4E6, #4682A9), url('.../images/nomerspisok.png') no-repeat center center;
-    background-size: cover; /* или contain, или конкретные размеры */
-    padding: 30px 15px 30px 45px; /* увеличено левое padding для сдвига текста */
+   background: linear-gradient(to bottom right,#AAD4E6, #4682A9);
+    padding: 30px 15px;
     border-radius: 35px;
     text-align: left;
     display: block;
     max-width: 900px;
     margin: 18px 0 0 150px;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* -------------------------------------------------- */
 
 
-.AI {
+/.AI {
   display: flex;
-  align-items: flex-start; 
-  padding-top: 220px;
-  padding-bottom: 200px;
+  align-items: flex-start;
+  padding: 120px 0; /* чуть уменьшили отступы */
+  gap: 30px; /* расстояние между картинкой и текстом */
 }
 
 .AI img {
   width: 370px;
   height: 450px;
   margin-left: 50px;
+  margin-top: 80px;
 }
 
 .AI-text {
-  margin-right: 20px;
-  margin-top: 5px;
-  margin-left: auto;
+  margin: -450px 50px 0 auto; /* правый отступ 50px, левый — auto → прижато вправо */
   text-align: center;
   font-size: 40px;
   color: #30465A;
+  max-width: 1000px; /* чтобы текст не растягивался на всю ширину */
 }
 
-.arrow img{
-    height: 150px;
-    width: 170px;
-    top: 50px;
-    left: 50px;
+.arrow-container {
+  margin: 30px 0 50px 0;
 }
 
-.butten{
-    background: #4682A9;
-    list-style-type: none;
-    color: #FFFBDE;
-    padding: 20px;        /* отступы внутри рамки */
-    border-radius: 15px;
-    font-size: 30px;
-    text-align: center;
-    /* Центрирование по горизонтали */
-    display: block;            /* ← обязательно! */
-    max-width: 500px;
-    font-weight: 600;
-    margin: 25px auto 0;      /* сверху 225px, по бокам auto → центр */
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+.arrow {
+  display: block;
+  height: 150px;
+  width: 170px;
+  margin-left: auto;
+  margin-right: 450px;
 }
 
+.butten-link {
+  text-decoration: none; /* убираем подчёркивание ссылки */
+  display: block;
+  text-align: center;
+}
 
+.butten {
+  background: #4682A9;
+  color: #FFFBDE;
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 30px;
+  font-weight: 600;
+  margin: 50px 290px 0 auto;
+  max-width: 500px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
 
 /* -------------------------------------------------- */
 
