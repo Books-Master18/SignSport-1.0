@@ -161,8 +161,17 @@ body {
     max-width: 900px;
     margin: 18px 0 0 150px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+      /* Плавная анимация для transform, background и тени */
+  transition: 
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
+.textspisok:hover {
+  background-color: #4682A9;
+  transform: translateY(-3px);
+}
 /* -------------------------------------------------- */
 
 
