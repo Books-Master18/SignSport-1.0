@@ -9,7 +9,7 @@ body {
 /* редактирование логотипа - его размер*/
 .header img{
     height: 100%;
-    width: 220px;
+    width: 200px;
 }
 
 
@@ -17,7 +17,7 @@ body {
 .header{
     background-color: #4682A9;
     color: #fffdef;              
-    height: 102px;
+    height: 85px;
     width: 100%;
     position: fixed;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
@@ -31,7 +31,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 16px;
+    padding-top: 10px;
     padding-bottom: 10px;
 }
 
@@ -323,8 +323,8 @@ footer {
 .upload-box {
   background-color: #4682A9;
   padding: 24px 40px;
-  border-radius: 50px;
   border: 3px dashed #305669; /* ваш цвет рамки */
+  border-radius: 50px;
   text-align: center;
   display: flex;
   flex-direction: column;
