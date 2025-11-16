@@ -246,7 +246,7 @@ body {
   color: #30465A;
   padding: 20px 30px;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   font-size: 21px;
   line-height: 1.6;
   width: 80%; /* фиксированная ширина относительно окна */
@@ -295,5 +295,29 @@ footer {
 }
 
 /* -------------------------------------------------- */
+
+.upload-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     width: 400px;
+     height: 400px;
+     outline: 2px dashed #5d5d5d;
+     outline-offset: -12px;
+     background-color: #e0f2f7;
+     font-family: 'Segoe UI';
+     color: #1f3c44;
+}
+
+
+.upload-container label {
+     font-weight: bold;
+}
+
+.upload-container label:hover {
+     cursor: pointer;
+     text-decoration: underline;
+}
 
 /* -------------------------------------------------- */
