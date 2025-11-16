@@ -181,7 +181,7 @@ body {
 }
 
 .AI-text {
-  margin: 100px 50px 0 auto; /* правый отступ 50px, левый — auto → прижато вправо */
+  margin: 90px 50px 0 auto; /* правый отступ 50px, левый — auto → прижато вправо */
   text-align: center;
   font-size: 40px;
   color: #30465A;
@@ -198,6 +198,7 @@ body {
   width: 170px;
   margin-left: auto;
   margin-right: 450px;
+  margin-top: -400px;
 }
 
 .butten-link {
@@ -213,7 +214,7 @@ body {
   border-radius: 15px;
   font-size: 30px;
   font-weight: 600;
-  margin: -10px 290px 0 auto;
+  margin: -20px 290px 0 auto;
   max-width: 500px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
