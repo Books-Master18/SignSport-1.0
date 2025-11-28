@@ -390,4 +390,53 @@ footer {
   transform: translateY(-1px);
 }
 
+
+/* Страница анализа — блок загрузки */
+.upload-box {
+    padding: 2rem;
+    text-align: center;
+}
+
+.upload-icon {
+    max-width: 120px;
+    margin-bottom: 1rem;
+}
+
+#reportInput {
+    width: 90%;
+    height: 150px;
+    padding: 12px;
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    resize: vertical; /* позволяет тянуть текстовое поле вниз */
+}
+
+.analyze-button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.analyze-button:hover {
+    background: #2980b9;
+}
+
+/* Блок результата */
+#result {
+    margin: 2rem auto;
+    max-width: 800px;
+    padding: 1.5rem;
+    background: #f0f8ff;
+    border-radius: 10px;
+    display: none;
+}
+
 /* -------------------------------------------------- */
