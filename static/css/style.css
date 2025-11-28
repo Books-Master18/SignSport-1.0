@@ -319,7 +319,7 @@ footer {
   max-width: 1000px;
 }
 
-.upload-box {
+/*.upload-box {
   background-color: #4682A9;
   height: 300px;
   width: 900px;
@@ -335,7 +335,7 @@ footer {
   transition: background-color 0.2s ease;
 }
 
-/* Внутренняя пунктирная рамка — меньше блока */
+/* Внутренняя пунктирная рамка — меньше блока 
 .upload-box::before {
   content: '';
   position: absolute;
@@ -344,36 +344,38 @@ footer {
   right: 10px;
   bottom: 10px;
   border: 3px dashed #223f4d;
-  border-radius: 50px; /* чуть меньше, чем у блока */
-  pointer-events: none; /* не мешает кликам */
+  border-radius: 50px; /* чуть меньше, чем у блока 
+  pointer-events: none; /* не мешает кликам 
   z-index: 0;
 }
+*/
 
-/* Чтобы контент не наезжал на рамку — оставить padding или использовать z-index */
+/* Чтобы контент не наезжал на рамку — оставить padding или использовать z-index 
 .upload-box > * {
   position: relative;
   z-index: 1;
 }
 
 .upload-box:hover {
-  background-color: #3a6d8c; /* чуть темнее при наведении */
+  background-color: #3a6d8c; /* чуть темнее при наведении 
 }
+*/
 
-/* Иконка загрузки */
+/* Иконка загрузки 
 .upload-icon {
   width: 180px;
   height: 180px;
 }
-
-/* Текст над кнопкой */
+*/
+/* Текст над кнопкой 
 .upload-box p {
   color: #fffdef;
   font-size: 20px;
   margin: 0;
   line-height: 1.4;
 }
-
-/* Кнопка "Выбрать файл" */
+*/
+/* Кнопка "Выбрать файл" 
 .file-button {
   background-color: #fffdef;
   color: #305669;
@@ -389,7 +391,7 @@ footer {
   background-color: #f0f0f0;
   transform: translateY(-1px);
 }
-
+*/
 
 /* Страница анализа — блок загрузки */
 .upload-box {
