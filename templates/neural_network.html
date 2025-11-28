@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.jpg') }}" sizes="16x16" type="image/jpeg">
 </head>
 
@@ -50,29 +49,27 @@
 </form>-->
 
 
-    <!-- Вместо загрузки файла — текстовое поле (нейросеть работает с текстом!) -->
-    <div class="upload-box" style="padding: 2rem; text-align: center;">
-        <img src="{{ url_for('static', filename='images/bannerAI.png') }}" alt="AI" class="upload-icon">
-        <p><b>Вставьте текст отчёта по анализу почерка</b></p>
+    <!-- Вместо загрузки файла — текстовое поле (нейросеть работает с текстом!)--> 
         
-        <textarea id="reportInput" 
-                  placeholder="Например: Человек склонен к внутреннему напряжению, эмоционально открыт, проявляет импульсивность, но при этом стремится к структуре и порядку..."></textarea>
+        <div class="upload-box">
+                    <textarea id="reportInput" 
+                  placeholder="Например: Человек склонен к внутреннему напряжению..."></textarea>
         
         <br>
-        <button type="button" onclick="runAnalysis()">
+
+        <button type="button" onclick="runAnalysis()" class="analyze-button">
             Получить рекомендацию
         </button>
-    </div>
-
-    <!-- Место для результата -->
-    <div id="result" ></div>
+        </div>
 
 
+    <div id="result"></div>
     
-<footer>
+    <footer>
         <div>
-      <p><b>SignSportNeuralNetwork 1.0 (2S2N 1.0) — Анализ почерка для подбора вида спорта</b></p>
-    
-    </footer>
+            <p><b>SignSportNeuralNetwork 1.0 (2S2N 1.0) — Анализ почерка для подбора вида спорта</b></p>
+        </footer>
+        <script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
+
 </body>
 </html>
