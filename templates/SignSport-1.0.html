@@ -8,66 +8,77 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/favicon.jpg" sizes="16x16" type="image/jpg">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.jpg') }}" sizes="16x16" type="image/jpeg">
 </head>
 
 <body>
 
     <div class="header">
-            <div class="navigation">
-                <a href="#"><img src="images/logo.png" alt="SignSport"></a>
-                <ul class="textnav">
-                    <li><a href="#"><b>Главное</b></a></li>
-                    <li><a href="neural_network.html"><b>Анализ</b></a></li>
-                    <!--<li><a href="#"><b>О нас</b></a></li>-->
-                    <li><a href="#" class="custom-tooltip"><b>О нас</b> <span class="tooltip-text">Нейросеть SignSport поможет вам выбрать подходящий для вас вид спорта, опираясь на ваш характер и личность! Загрузите файл нейросети и она предоставит вам долгожданный подробный ответ. Также, можно будет задать ей простые вопросы, связанные с характером и спортом.</span></a></li>
-                </ul>
-            </div>
-            </div>
+        <div class="navigation">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SignSport">
+            </a>
+            <ul class="textnav">
+                <li><a href="{{ url_for('home') }}"><b>Главное</b></a></li>
+                <li><a href="{{ url_for('analyze_page') }}"><b>Анализ</b></a></li>
+                <li>
+                    <a href="#" class="custom-tooltip">
+                        <b>О нас</b>
+                        <span class="tooltip-text">
+                            Нейросеть SignSport поможет вам выбрать подходящий для вас вид спорта, опираясь на ваш характер и личность! Загрузите файл нейросети и она предоставит вам долгожданный подробный ответ. Также, можно будет задать ей простые вопросы, связанные с характером и спортом.
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <div class="mainpage">
         <h1 class="maintext">Добро пожаловать на SignSport!</h1>
-        <p class="subtitle"><i>Подберём подходящий для вас вид спорта не только по вашей физической форме, но и по личностным особенностям, используя для этого анализ вашего почерка!</i></p>
-        <img src="images/fencing.png" alt="fencing">
+        <p class="subtitle">
+            <i>Подберём подходящий для вас вид спорта не только по вашей физической форме, но и по личностным особенностям, используя для этого анализ вашего почерка!</i>
+        </p>
+        <img src="{{ url_for('static', filename='images/fencing.png') }}" alt="fencing">
     </div>
 
     <div class="text">
-        <p>Нейросеть <strong>SignSportNeuralNetwork 1.0 (сокращенно 2S2N 1.0)</strong> использует результаты графологического анализа почерка для определения вида спорта, который подходит вашему характеру — а не только физическим данным. Это уникальный подход, основанный на научных связях между почерком, личностью и предрасположенностью к определённым видам физической активности.</p>
+        <p>
+            Нейросеть <strong>SignSportNeuralNetwork 1.0 (сокращенно 2S2N 1.0)</strong> использует результаты графологического анализа почерка для определения вида спорта, который подходит вашему характеру — а не только физическим данным. Это уникальный подход, основанный на научных связях между почерком, личностью и предрасположенностью к определённым видам физической активности.
+        </p>
     </div>
 
     <div class="list">
-        <img class = "tennis" src="images/tennis.png" alt="tennis">
+        <img class="tennis" src="{{ url_for('static', filename='images/tennis.png') }}" alt="tennis">
         <p class="name">Этапы работы проекта:</p>
         <ul class="spisok">
-            <!--<img class = "imgspisok" src="images/nomerspisok.png" alt="nomerspisok">-->
             <li class="textspisok">Проанализировать почерк человека</li>
             <li class="textspisok">Загрузить данные отчета в нейросеть</li>
             <li class="textspisok">Получить долгожданный результат</li>
             <li class="textspisok">При необходимости – задать вопрос нейросети (пока в разработке)</li>
-            <img class = "athletic" src="images/athlete.png" alt="athlete">
-    </ul>
-</div>
+            <img class="athletic" src="{{ url_for('static', filename='images/athlete.png') }}" alt="athlete">
+        </ul>
+    </div>
 
-<div class="AI">
-  <img src="images/photo.png" alt="mini capibara">
-  <p class="AI-text">Загрузите готовый отчёт по анализу вашего почерка — и получите рекомендацию по подходящему виду спорта прямо сейчас!</p>
-</div>
+    <div class="AI">
+        <img src="{{ url_for('static', filename='images/photo.png') }}" alt="mini capibara">
+        <p class="AI-text">Загрузите готовый отчёт по анализу вашего почерка — и получите рекомендацию по подходящему виду спорта прямо сейчас!</p>
+    </div>
 
-<div class="arrow-container">
-  <img src="images/arrow.png" alt="arrow" class="arrow">
-</div>
+    <div class="arrow-container">
+        <img src="{{ url_for('static', filename='images/arrow.png') }}" alt="arrow" class="arrow">
+    </div>
 
-<a href="neural_network.html" class="butten-link">
-  <p class="butten">Проанализировать сейчас</p>
-</a>
-    
+    <a href="{{ url_for('analyze_page') }}" class="butten-link">
+        <p class="butten">Проанализировать сейчас</p>
+    </a>
 
     <footer>
         <div>
-      <p><b>SignSportNeuralNetwork 1.0 (2S2N 1.0) — Анализ почерка для подбора вида спорта</b></p>
-    
+            <p><b>SignSportNeuralNetwork 1.0 (2S2N 1.0) — Анализ почерка для подбора вида спорта</b></p>
+        </div>
     </footer>
 
 </body>
