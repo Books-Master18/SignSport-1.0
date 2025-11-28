@@ -25,12 +25,12 @@ SPORT_RECOMMENDATIONS = {
 # Главная страница — описание проекта
 @app.route('/')
 def home():
-    return render_template('SignSport-1.0.html.html')
+    return render_template('SignSport-1.0.html')
 
 # Страница с нейросетью
 @app.route('/analyze-page')
 def analyze_page():
-    return render_template('SignSport-1.0.html')
+    return render_template('neural_network.html')
 
 # API для анализа текста (вызывается из JavaScript)
 @app.route('/api/analyze', methods=['POST'])
