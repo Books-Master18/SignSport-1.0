@@ -142,7 +142,7 @@ body {
     margin-left: auto;     /* отталкивает от левого края */
     margin-right: 30px;       /* прижимает к правому */
     /* margin-top по желанию, например: */
-    margin-top: -280px;
+    margin-top: -180px;
 }
 
 .spisok{
@@ -395,47 +395,51 @@ footer {
 
 /* Страница анализа — блок загрузки */
 .upload-box {
-    padding: 2rem;
+    padding: 32px;
     text-align: center;
 }
 
 .upload-icon {
-    max-width: 120px;
-    margin-bottom: 1rem;
+    max-width: 100px;
+    margin-bottom: 16px;
 }
 
 #reportInput {
-    width: 90%;
-    height: 150px;
+    width: 75%;
+    height: 170px;
     padding: 12px;
-    margin: 1rem 0;
+    margin: 16 0;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-family: inherit;
-    font-size: 16px;
-    resize: vertical; /* позволяет тянуть текстовое поле вниз */
+    font-size: 18px;
+    resize: none;
 }
 
 .analyze-button {
-    background: #3498db;
+    background: #4682A9;
     color: white;
     border: none;
-    padding: 10px 24px;
-    font-size: 16px;
-    border-radius: 6px;
+    padding: 14px 32px;
+    font-size: 18px;        
+    font-weight: 600;             
+    border-radius: 12px; 
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(70, 130, 169, 0.25);
 }
 
 .analyze-button:hover {
-    background: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(70, 130, 169, 0.35);
+    background: #3a6d8c;
 }
 
 /* Блок результата */
 #result {
-    margin: 2rem auto;
+    margin: 32px auto;
     max-width: 800px;
-    padding: 1.5rem;
+    padding: 24px;
     background: #f0f8ff;
     border-radius: 10px;
     display: none;
