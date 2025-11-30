@@ -90,9 +90,9 @@ body {
 .subtitle{
     color: #496F94;
     font-size: 22px;
-    max-width: 1000px;      /* Максимальная ширина — не больше 1170px */
-    margin: 0 auto;         /* Отцентрировать по горизонтали */
-    padding-left: 20px;     /* Внутренние отступы (по желанию) */
+    max-width: 1100px;      
+    margin: 0 auto;         
+    padding-left: 20px;    
     padding-right: 20px;
     text-align: center;
 }
