@@ -1,3 +1,5 @@
 flask
-transformers
+transformers[sentencepiece]
 torch
+datasets
+scikit-learn
