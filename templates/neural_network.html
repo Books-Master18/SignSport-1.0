@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.jpg') }}" sizes="16x16" type="image/jpeg">
@@ -39,37 +40,31 @@
         <p class="subtitle_two"><i>Не знаете, какой спорт вам подойдёт? Хотите подобрать его не только по физическим показателям, но и по личностным особенностям? Тогда вы по адресу!</i></p>
     </div>
 
-<!--<form id="upload-container" method="POST" action="send.php">
-  <div class="upload-box">
-    <img src="images/bannerAI.png" alt="Загрузить файл" class="upload-icon">
-    <p><b>Загрузить отчет по анализу вашего почерка</b></p>
-    <label for="file-input" class="file-button">Выбрать файл</label>
-    <input id="file-input" type="file" name="file" multiple style="display: none;">
-  </div>
-</form>-->
-
-
-    <!-- Вместо загрузки файла — текстовое поле (нейросеть работает с текстом!)--> 
-        
-        <div class="upload-box">
-                    <textarea id="reportInput" 
-                  placeholder="Например: Человек склонен к внутреннему напряжению..."></textarea>
-        
+    <div class="upload-box">
+        <textarea id="reportInput" placeholder="Например: Человек интровертный, спокойный, устойчив к монотонии, умеет управлять вниманием..."></textarea>
         <br>
-
         <button type="button" onclick="runAnalysis()" class="analyze-button">
             Получить рекомендацию
         </button>
+    </div>
+
+    <!-- Место для результата -->
+    <div id="result" class="result-box" style="display: none;">
+        <div class="result-header">
+            <span class="checkmark">✅</span>
+            <strong>Рекомендация готова!</strong>
         </div>
+        <p><strong>Рекомендуемый вид спорта:</strong> <span id="recommendedSport"></span></p>
+        <p><strong>Уверенность модели:</strong> <span id="confidence"></span>%</p>
+        <p id="reasonText"></p>
+    </div>
 
-
-    <div id="result"></div>
-    
     <footer>
         <div>
-            <p><b>SignSportNeuralNetwork 1.0 (2S2N 1.0) — Анализ почерка для подбора вида спорта</b></p>
-        </footer>
-        <script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
+            <p><b>SignSport — Подбор вида спорта по психологическому профилю</b></p>
+        </div>
+    </footer>
 
+    <script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
 </body>
 </html>
