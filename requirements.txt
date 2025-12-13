@@ -1,5 +1,6 @@
 flask
-transformers[sentencepiece]
+gunicorn
+transformers
 torch
-datasets
-scikit-learn
+numpy
+sentencepiece
