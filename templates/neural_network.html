@@ -39,6 +39,7 @@
         <h1 class="maintext">Добро пожаловать на SignSport!</h1>
         <p class="subtitle_two"><i>Не знаете, какой спорт вам подойдёт? Хотите подобрать его не только по физическим показателям, но и по личностным особенностям? Тогда вы по адресу!</i></p>
     </div>
+    
     <div class="carousel-container">
     <button class="arrow left-arrow" id="prevBtn">‹</button>
     <div class="carousel">
@@ -50,7 +51,7 @@
     <button class="arrow right-arrow" id="nextBtn">›</button>
   </div>
 
-  <script src="script.js"></script>
+  
 
     <div class="upload-box">
         <textarea id="reportInput" placeholder="Например: Человек интровертный, спокойный, устойчив к монотонии, умеет управлять вниманием..."></textarea>
@@ -78,5 +79,6 @@
     </footer>
 
     <script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
