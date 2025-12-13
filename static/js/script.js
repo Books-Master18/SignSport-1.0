@@ -2,7 +2,7 @@
 const reviews = document.querySelectorAll('.review');
 let currentIndex = 0;
 
-// Функция отображения текущего отзыва
+// Функция отображения текущего текста
 function showReview(index) {
   reviews.forEach((review, i) => {
     review.classList.toggle('active', i === index);
