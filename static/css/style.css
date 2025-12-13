@@ -449,3 +449,64 @@ footer {
 }
 
 /* -------------------------------------------------- */
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 80px auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+.carousel {
+  width: 400px;
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.review {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.review.active {
+  opacity: 1;
+}
+
+.arrow {
+  background: #e0e0e0;
+  border: none;
+  font-size: 28px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.arrow:hover {
+  background: #cfcfcf;
+}
