@@ -534,7 +534,7 @@ footer {
     animation: fadeIn 0.5s ease-in;
     padding: 20px;
     background: white;
-    border-radius: 10px;
+    border-radius: 40px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     margin-top: 20px;
 }
@@ -544,11 +544,17 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
+.result-container h3 {
+    color: #4682A9;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
 .main-recommendation {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #749BC2 0%, #4682A9 100%);
     color: white;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 30px;
     margin: 15px 0;
 }
 
@@ -595,7 +601,7 @@ footer {
     padding: 12px 15px;
     background: #f8f9fa;
     border-radius: 8px;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #749BC2;
     transition: transform 0.2s;
 }
 
@@ -610,7 +616,7 @@ footer {
 }
 
 .alt-confidence {
-    color: #667eea;
+    color: #749BC2;
     font-weight: bold;
     font-size: 14px;
 }
