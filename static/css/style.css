@@ -381,8 +381,7 @@ footer {
 /* -------------------------------------------------- */
 
 .page2{
-    padding-top: 65px;
-    padding-bottom: 40px;
+    padding-bottom: -18px;
 }
 
 .textexample{
@@ -465,8 +464,7 @@ footer {
   pointer-events: auto; 
 }
 
-
-.arrow {
+.left-arrow {
   margin-right: 10px;
   margin-top: -10px;
   font-size: 20px;
@@ -493,6 +491,38 @@ footer {
   flex-shrink: 0;
 }
 
-.arrow:hover {
+.left-arrow:hover {
+  background: #d8d8d8;
+}
+
+.right-arrow{
+  margin-right: 10px;
+  margin-top: -10px;
+  font-size: 20px;
+  width: 60px;
+  height: 40px;
+  border-radius: 100%;
+  margin-left: 10px;
+  margin-top: -10px;
+  font-size: 20px;
+  width: 60px;
+  height: 40px;
+  border-radius: 100%;
+  background: #f0f0f0;
+  border: none;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  border-radius: 50%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  color: #444;
+  flex-shrink: 0;
+
+}
+
+.right-arrow:hover {
   background: #d8d8d8;
 }
