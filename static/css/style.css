@@ -383,7 +383,7 @@ footer {
 .textexample{
     margin-top: 50px;
     color: #496F94;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
     margin-left: 100px;
     text-align: left
@@ -422,7 +422,7 @@ footer {
 /* ——— Каждый текст ——— */
 .review {
   position: absolute;
-  top: 25px;
+  top: 40px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -441,10 +441,23 @@ footer {
   /* Добавим прокрутку, если вдруг не влезет */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+
+  /* ✅ РАЗРЕШИТЬ ВЫДЕЛЕНИЕ ТЕКСТА */
+  user-select: text;        /* для всех браузеров */
+  -webkit-user-select: text; /* для Safari */
+  pointer-events: none;
+}
+.review p {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: inherit;
 }
 
 .review.active {
   opacity: 1;
+  pointer-events: auto; 
 }
 
 
