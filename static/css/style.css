@@ -526,3 +526,101 @@ footer {
 .right-arrow:hover {
   background: #d8d8d8;
 }
+
+
+/*----------------------------------------*/
+
+.result-container {
+    animation: fadeIn 0.5s ease-in;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.main-recommendation {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.main-recommendation .sport-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.main-recommendation .confidence {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 15px;
+}
+
+.main-recommendation .reason {
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.alternative-recommendations {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px dashed #eee;
+}
+
+.alternative-recommendations h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.alternatives-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alternative-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    transition: transform 0.2s;
+}
+
+.alternative-item:hover {
+    transform: translateX(5px);
+    background: #e9ecef;
+}
+
+.alt-sport {
+    font-weight: 600;
+    color: #333;
+}
+
+.alt-confidence {
+    color: #667eea;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.error-message {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}

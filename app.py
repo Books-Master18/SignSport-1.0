@@ -4,7 +4,7 @@ import os
 # Отключаем предупреждение о параллелизме токенизаторов в Flask
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-# Список видов спорта на русском — используется и для дообученной модели, и для zero-shot
+# Список видов спорта на русском
 SPORT_CATEGORIES = [
     "Футбол", "Гандбол", "Водное поло", "Волейбол", "Плавание",
     "Фигурное катание", "Тяжелая атлетика", "Теннис",
@@ -18,13 +18,13 @@ MODEL_READY = False
 try:
     from transformers import pipeline
 
-    # Попытка загрузить дообученную модель (должна быть в папке signsport-model/)
+    # Попытка загрузить дообученную модель
     if os.path.exists("signsport-model") and os.path.isdir("signsport-model"):
         classifier = pipeline("text-classification", model="signsport-model")
         MODEL_READY = True
         print("✅ Используется дообученная модель из папки 'signsport-model'")
     else:
-        # Fallback: многоязычная zero-shot модель (поддерживает русский!)
+        # Fallback: многоязычная zero-shot модель
         print("⚠️ Дообученная модель не найдена. Загрузка многоязычной zero-shot модели...")
         classifier = pipeline(
             "zero-shot-classification",
@@ -37,6 +37,99 @@ except Exception as e:
     print(f"❌ Ошибка при загрузке модели: {e}")
     MODEL_READY = False
     classifier = None
+
+# ================ НАЧАЛО НОВОГО КОДА ================
+
+def get_diversified_recommendations(text, top_n=3):
+    """
+    Получает диверсифицированные рекомендации - гарантирует разные категории
+    """
+    if not MODEL_READY or classifier is None:
+        return None
+    
+    # Категории для диверсификации
+    sport_categories_map = {
+        "Водные": ["Плавание", "Водное поло"],
+        "Командные": ["Футбол", "Волейбол", "Гандбол", "Хоккей"],
+        "Интеллектуальные": ["Шахматы", "Фехтование"],
+        "Силовые": ["Тяжелая атлетика"],
+        "Артистичные": ["Фигурное катание", "Акробатика"],
+        "Индивидуальные": ["Теннис", "Бокс"]
+    }
+    
+    try:
+        # Для дообученной модели
+        if os.path.exists("signsport-model") and os.path.isdir("signsport-model"):
+            # Получаем все предсказания
+            predictions = []
+            for sport in SPORT_CATEGORIES:
+                try:
+                    result = classifier(text, candidate_labels=[sport])
+                    predictions.append({
+                        "sport": sport,
+                        "confidence": round(result['scores'][0] * 100, 1)
+                    })
+                except:
+                    predictions.append({
+                        "sport": sport,
+                        "confidence": 0.0
+                    })
+            
+            # Сортируем по уверенности
+            predictions.sort(key=lambda x: x["confidence"], reverse=True)
+            
+        # Для zero-shot модели
+        else:
+            result = classifier(text, candidate_labels=SPORT_CATEGORIES)
+            predictions = []
+            for label, score in zip(result['labels'], result['scores']):
+                predictions.append({
+                    "sport": label,
+                    "confidence": round(score * 100, 1)
+                })
+        
+        # Диверсификация: гарантируем разные категории
+        selected_sports = []
+        selected_categories = []
+        diversified_results = []
+        
+        for pred in predictions:
+            if len(diversified_results) >= top_n:
+                break
+                
+            sport = pred["sport"]
+            
+            # Определяем категорию
+            sport_category = None
+            for category, sports in sport_categories_map.items():
+                if sport in sports:
+                    sport_category = category
+                    break
+            if sport_category is None:
+                sport_category = "Другие"
+            
+            # Если эта категория еще не выбрана, добавляем
+            if sport_category not in selected_categories:
+                diversified_results.append(pred)
+                selected_sports.append(sport)
+                selected_categories.append(sport_category)
+        
+        # Если не набрали нужное количество, добавляем самые уверенные
+        if len(diversified_results) < top_n:
+            for pred in predictions:
+                if len(diversified_results) >= top_n:
+                    break
+                if pred["sport"] not in selected_sports:
+                    diversified_results.append(pred)
+                    selected_sports.append(pred["sport"])
+        
+        return diversified_results
+        
+    except Exception as e:
+        print(f"❌ Ошибка в get_diversified_recommendations: {e}")
+        return None
+
+# ================ КОНЕЦ НОВОГО КОДА ================
 
 # Инициализация Flask-приложения
 app = Flask(__name__)
@@ -59,18 +152,28 @@ def analyze_text():
         text = data.get('text', '').strip()
         if not text:
             return jsonify({"error": "Пожалуйста, введите текст графологического отчёта."}), 400
-
-        # Дообученная модель: ожидает метки на русском
-        if os.path.exists("signsport-model") and os.path.isdir("signsport-model"):
-            result = classifier(text)
-            sport = result[0]['label']
-            confidence = round(result[0]['score'] * 100, 1)
-        else:
-            # Zero-shot: передаём русские метки напрямую
-            result = classifier(text, candidate_labels=SPORT_CATEGORIES)
-            sport = result['labels'][0]
-            confidence = round(result['scores'][0] * 100, 1)
-
+        
+        # ================ ИЗМЕНЯЕМ ЭТУ ЧАСТЬ ================
+        # Получаем распределения ресурсов с целью минимизации рисков рекомендации
+        recommendations = get_diversified_recommendations(text, top_n=3)
+        
+        if not recommendations or len(recommendations) == 0:
+            return jsonify({"error": "Не удалось получить рекомендации"}), 500
+        
+        # Основная рекомендация (самая уверенная)
+        main_recommendation = recommendations[0]
+        sport = main_recommendation["sport"]
+        confidence = main_recommendation["confidence"]
+        
+        # Дополнительные рекомендации
+        additional_recommendations = []
+        if len(recommendations) > 1:
+            for i in range(1, len(recommendations)):
+                additional_recommendations.append({
+                    "sport": recommendations[i]["sport"],
+                    "confidence": recommendations[i]["confidence"]
+                })
+        
         # Пояснения для каждого вида спорта
         REASONS = {
             "Футбол": "Общительность, экстраверсия, стремление к победе и командная работа — основа успеха в футболе.",
@@ -85,6 +188,7 @@ def analyze_text():
             "Фехтование": "Аналитичность, самоконтроль, быстрота реакции и умение просчитывать ходы соперника.",
             "Акробатика": "Артистичность, чувствительность, творческое воображение и высокая вестибулярная устойчивость.",
             "Шахматы": "Спокойствие, аналитичность, уравновешенность и способность к глубокому анализу.",
+            "Бокс": "Смелость, решительность, стратегическое мышление и умение принимать быстрые решения под давлением.",
         }
 
         reason = REASONS.get(sport, "Рекомендация основана на вашем психологическом профиле.")
@@ -93,8 +197,10 @@ def analyze_text():
             "success": True,
             "sport": sport,
             "confidence": confidence,
-            "reason": reason
+            "reason": reason,
+            "additional_recommendations": additional_recommendations
         })
+        # ================ КОНЕЦ ИЗМЕНЕНИЙ ================
 
     except Exception as e:
         # Логируем ошибку на сервере, но не показываем детали пользователю
