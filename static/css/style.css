@@ -380,6 +380,11 @@ footer {
 
 /* -------------------------------------------------- */
 
+.page2{
+    padding-top: 65px;
+    padding-bottom: 40px;
+}
+
 .textexample{
     margin-top: 50px;
     color: #496F94;
