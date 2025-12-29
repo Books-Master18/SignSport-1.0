@@ -1,3 +1,4 @@
+"""
 # train_model.py
 from transformers import (
     AutoTokenizer,
@@ -72,3 +73,4 @@ trainer.train()
 model.save_pretrained("signsport-model")
 tokenizer.save_pretrained("signsport-model")
 print("✅ Модель сохранена в папку 'signsport-model'")
+"""
