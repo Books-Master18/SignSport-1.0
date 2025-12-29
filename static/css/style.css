@@ -1,3 +1,5 @@
+/* === ОБЩИЕ СТИЛИ === */
+
 /* тело сайта. Цвет фона и шрифт для всего сайта*/
 body {
     background-color: #fffdef;
@@ -6,14 +8,13 @@ body {
 
 /* -------------------------------------------------- */
 
-/* редактирование логотипа - его размер*/
+/* редактирование размера логотипа на баннере */
 .header img{
     height: 100%;
     width: 200px;
 }
 
-
-/*создание баннера*/
+/*создание баннера - цвет, размер текста позиции, тень*/
 .header{
     background-color: #4682A9;
     color: #fffdef;              
@@ -70,6 +71,9 @@ body {
 
 /* -------------------------------------------------- */
 
+/* === СТИЛИ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ === */
+
+/* Распределение текста и картинки на сайте */
 .mainpage{
     padding-top: 200px;
     padding-bottom: 100px;
@@ -82,6 +86,8 @@ body {
 
 /* -------------------------------------------------- */
 
+/* Заголовок на главной и странице анализа */
+
 .maintext{
     color: #749BC2;
     font-size: 60px;
@@ -89,6 +95,8 @@ body {
 }
 
 /* -------------------------------------------------- */
+
+/* Подзаголовок на главной странице */
 
 .subtitle{
     color: #496F94;
@@ -103,6 +111,8 @@ body {
 
 /* -------------------------------------------------- */
 
+/*фото капибары рядом с рамкой*/
+
 .tennis {
     width: 347px;
     height: 347px;
@@ -111,7 +121,8 @@ body {
     display: block;
 }
 
-/*текст в рамке*/
+/*текст в рамке прямоугольной с оруглыми углами*/
+
 .text {
     background: #4682A9;
     color: #FFFBDE;
@@ -120,13 +131,14 @@ body {
     font-size: 28px;
     text-align: center;
     /* Центрирование по горизонтали */
-    display: block;            /* ← обязательно! */
+    display: block;
     max-width: 1250px;
     margin: -25px auto 0;    
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
 }
 
 /* -------------------------------------------------- */
+
 /*нзвание списка*/
 .name{
     color: #406890;
@@ -137,7 +149,7 @@ body {
     margin-left: 70px;
 }
 
-/* -------------------------------------------------- */
+/*капибара рядом со списком*/
 
 .athletic {
     width: 347px;
@@ -149,12 +161,14 @@ body {
     margin-top: -180px;
 }
 
+/* Список этапов */
+
 .spisok{
     color: #30465A;
     font-size: 30px;
 }
 
-/* -------------------------------------------------- */
+/* Элементы списка этапов (оформление блоков) */
 
 .textspisok {
    background: linear-gradient(to bottom right,#AAD4E6, #4682A9);
@@ -165,7 +179,7 @@ body {
     max-width: 900px;
     margin: 18px 0 0 150px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-      /* Плавная анимация для transform, background и тени */
+    /* Плавная анимация для transform, background и тени */
   transition: 
     transform 0.3s ease,
     background-color 0.3s ease,
@@ -178,6 +192,7 @@ body {
 }
 /* -------------------------------------------------- */
 
+/* Блок с надписью "Загрузите отчёт..." */
 
 .AI {
   display: flex;
@@ -201,6 +216,8 @@ body {
   max-width: 1000px; /* чтобы текст не растягивался на всю ширину */
 }
 
+/* Стрелка перед кнопкой */
+
 .arrow-container {
   margin: 30px 0 50px 0;
 }
@@ -213,6 +230,8 @@ body {
   margin-right: 450px;
   margin-top: -400px;
 }
+
+/* Стили кнопки "Проанализировать сейчас" */
 
 .butten-link {
   text-decoration: none; /* убираем подчёркивание ссылки */
@@ -243,6 +262,7 @@ body {
 
 /* -------------------------------------------------- */
 
+/* === СТИЛИЗАЦИЯ ПОДСКАЗКИ "О НАС" === */
 
 /* Стили для ссылки с подсказкой */
 .custom-tooltip {
@@ -255,12 +275,12 @@ body {
   text-decoration: none;
 }
 
-/* Всплывающая подсказка — стиль как на скриншоте */
+/* Всплывающая подсказка*/
 .custom-tooltip .tooltip-text {
   visibility: hidden;
   opacity: 0;
-  position: fixed; /* ← ключевое изменение! */
-  top: 102px; /* высота вашего .header — под баннером */
+  position: fixed; 
+  top: 102px;
   left: 50%;
   transform: translateX(-10%);
   background-color: #fffdef;
@@ -286,8 +306,9 @@ body {
 }
 
 
-
 /* -------------------------------------------------- */
+
+/* === ФУТЕР === */
 
 footer {
     color: #30465A;
@@ -299,18 +320,21 @@ footer {
 
 /* -------------------------------------------------- */
 
+/* === СТИЛИ ДЛЯ СТРАНИЦЫ АНАЛИЗА === */
+
 .page{
     padding-top: 65px;
     padding-bottom: 40px;
 }
 
+/* Подзаголовок на странице анализа */
 
 .subtitle_two{
     color: #496F94;
     font-size: 24px;
-    max-width: 1200px;      /* Максимальная ширина — не больше 1170px */
-    margin: 0 auto;         /* Отцентрировать по горизонтали */
-    padding-left: 20px;     /* Внутренние отступы (по желанию) */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
     padding-right: 20px;
     text-align: center;
 }
@@ -323,7 +347,7 @@ footer {
   max-width: 1000px;
 }
 
-/* Страница анализа — блок загрузки */
+/* Поле ввода и кнопка анализа */
 .upload-box {
     padding: 32px;
     text-align: center;
@@ -338,7 +362,7 @@ footer {
     width: 75%;
     height: 170px;
     padding: 12px;
-    margin: 16px 0; /* ← исправлено: было "16 0", нужно "16px 0" */
+    margin: 16px 0;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-family: inherit;
@@ -379,6 +403,8 @@ footer {
 }
 
 /* -------------------------------------------------- */
+
+/* === ПРИМЕРЫ ХАРАКТЕРА (КАРУСЕЛЬ) === */
 
 .page2{
     padding-bottom: -18px;
@@ -525,108 +551,4 @@ footer {
 
 .right-arrow:hover {
   background: #d8d8d8;
-}
-
-
-/*----------------------------------------*/
-
-.result-container {
-    animation: fadeIn 0.5s ease-in;
-    padding: 20px;
-    background: white;
-    border-radius: 40px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    margin-top: 20px;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.result-container h3 {
-    color: #4682A9;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.main-recommendation {
-    background: linear-gradient(135deg, #749BC2 0%, #4682A9 100%);
-    color: white;
-    padding: 20px;
-    border-radius: 30px;
-    margin: 15px 0;
-}
-
-.main-recommendation .sport-name {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.main-recommendation .confidence {
-    font-size: 16px;
-    opacity: 0.9;
-    margin-bottom: 15px;
-}
-
-.main-recommendation .reason {
-    font-size: 14px;
-    line-height: 1.5;
-    opacity: 0.9;
-}
-
-.alternative-recommendations {
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 2px dashed #eee;
-}
-
-.alternative-recommendations h4 {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 18px;
-}
-
-.alternatives-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.alternative-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 15px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border-left: 4px solid #749BC2;
-    transition: transform 0.2s;
-}
-
-.alternative-item:hover {
-    transform: translateX(5px);
-    background: #e9ecef;
-}
-
-.alt-sport {
-    font-weight: 600;
-    color: #333;
-}
-
-.alt-confidence {
-    color: #749BC2;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.error-message {
-    animation: shake 0.5s;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-    20%, 40%, 60%, 80% { transform: translateX(5px); }
 }
