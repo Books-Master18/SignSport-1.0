@@ -1,12 +1,15 @@
+// Когда страница полностью загрузилась — запускаем карусель
 document.addEventListener('DOMContentLoaded', () => {
+
+  // === СБОР ЭЛЕМЕНТОВ СО СТРАНИЦЫ ===
   const reviews = document.querySelectorAll('.review');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
-  const counterEl = document.getElementById('counter'); // ← добавили счётчик
+  const counterEl = document.getElementById('counter'); // добавили счётчик
   let currentIndex = 0;
   const total = reviews.length;
 
-  // Показать текущий отзыв + обновить счётчик
+  // Показать текущий анализ + обновить счётчик
   function updateReview() {
     reviews.forEach((review, index) => {
       review.classList.toggle('active', index === currentIndex);
