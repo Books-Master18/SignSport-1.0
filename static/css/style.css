@@ -413,7 +413,7 @@ footer {
 .textexample{
     margin-top: 50px;
     color: #496F94;
-    font-size: 28px;
+    font-size: 40px;
     font-weight: 700;
     margin-left: 100px;
     text-align: left
@@ -429,15 +429,15 @@ footer {
   gap: 6px;
   margin: 80px auto;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1000px;
   padding: 0 15px;
 }
 
 /* ——— Сам блок карусели ——— */
 .carousel {
   width: 100%;
-  max-width: 900px;
-  min-width: 300px;
+  max-width: 700px;
+  min-width: 70px;
   height: 400px;
   position: relative;
   overflow: hidden;
@@ -467,7 +467,6 @@ footer {
   text-align: center;
   padding: 0 10px;
   box-sizing: border-box;
-  
   /* Добавим прокрутку, если вдруг не влезет */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -477,6 +476,7 @@ footer {
   -webkit-user-select: text; /* для Safari */
   pointer-events: none;
 }
+
 .review p {
   margin: 0;
   padding: 0;
@@ -551,4 +551,107 @@ footer {
 
 .right-arrow:hover {
   background: #d8d8d8;
+}
+
+/*----------------------------------------*/
+/*Стиль для вывода результата*/
+.result-container {
+    animation: fadeIn 0.5s ease-in;
+    padding: 20px;
+    background: white;
+    border-radius: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.result-container h3 {
+    color: #4682A9;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.main-recommendation {
+    background: linear-gradient(135deg, #749BC2 0%, #4682A9 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 30px;
+    margin: 15px 0;
+}
+
+.main-recommendation .sport-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.main-recommendation .confidence {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 15px;
+}
+
+.main-recommendation .reason {
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.alternative-recommendations {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px dashed #eee;
+}
+
+.alternative-recommendations h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.alternatives-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alternative-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #749BC2;
+    transition: transform 0.2s;
+}
+
+.alternative-item:hover {
+    transform: translateX(5px);
+    background: #e9ecef;
+}
+
+.alt-sport {
+    font-weight: 600;
+    color: #333;
+}
+
+.alt-confidence {
+    color: #749BC2;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.error-message {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
 }
