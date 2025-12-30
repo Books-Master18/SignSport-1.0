@@ -18,7 +18,6 @@ def analyze_personality(text):
     """
     text_lower = text.lower()
     
-    # Счетчики для разных категорий
     categories = {
         "интеллектуальный": 0,
         "творческий": 0,
@@ -30,7 +29,6 @@ def analyze_personality(text):
         "силовой": 0
     }
     
-    # Ключевые слова для каждой категории
     keywords = {
         "интеллектуальный": ["интеллект", "аналитический", "логика", "стратегия", "расчет", "мышление"],
         "творческий": ["творческий", "креатив", "артистизм", "фантазия", "импровизация", "экспрессивный"],
@@ -42,24 +40,21 @@ def analyze_personality(text):
         "силовой": ["сила", "воля", "дисциплина", "упорство", "преодоление", "выносливость"]
     }
     
-    # Подсчет совпадений
     for category, words in keywords.items():
         for word in words:
             if word in text_lower:
                 categories[category] += 1
     
-    # Определение доминирующего типа
     sorted_categories = sorted(categories.items(), key=lambda x: x[1], reverse=True)
     dominant_type = sorted_categories[0][0] if sorted_categories[0][1] > 0 else "универсальный"
     
     return dominant_type, categories
 
+
 def get_sport_recommendations(personality_type, category_scores):
     """
     Возвращает рекомендации по спорту на основе психологического профиля
     """
-    
-    # Матрица соответствия типов личности и видов спорта
     sport_matrix = {
         "интеллектуальный": [
             {"sport": "Шахматы", "confidence": 92, "reason": "Ваш аналитический ум и стратегическое мышление идеально подходят для шахмат."},
@@ -110,6 +105,62 @@ def get_sport_recommendations(personality_type, category_scores):
     
     return sport_matrix.get(personality_type, sport_matrix["универсальный"])
 
+
+def filter_sports_by_age_gender(recommendations, age, gender):
+    """
+    Фильтрует рекомендации по возрасту и полу согласно данным из таблицы Excel.
+    Возвращает отфильтрованный список.
+    """
+    if age is None or gender is None:
+        return recommendations
+
+    # Определяем возрастную группу
+    if 7 <= age <= 10:
+        age_group = "7–10"
+    elif 11 <= age <= 14:
+        age_group = "11–14"
+    elif 15 <= age <= 17:
+        age_group = "15–17"
+    elif 18 <= age <= 25:
+        age_group = "18–25"
+    elif 26 <= age <= 35:
+        age_group = "26–35"
+    else:
+        age_group = "35+"
+
+    # Определяем пол с учётом возраста
+    if age_group == "7–10":
+        gender_label = "Мальчики" if gender == "male" else "Девочки"
+    elif age_group == "11–14":
+        gender_label = "Мальчики" if gender == "male" else "Девочки"
+    elif age_group == "15–17":
+        gender_label = "Юноши" if gender == "male" else "Девушки"
+    elif age_group in ("18–25", "26–35"):
+        gender_label = "Мужчины" if gender == "male" else "Женщины"
+    else:  # 35+
+        gender_label = "Оба пола"
+
+    # Словарь **запрещённых** видов спорта по группам
+    forbidden_map = {
+        ("7–10", "Мальчики"): {"Тяжелая атлетика", "Фехтование", "Хоккей"},
+        ("7–10", "Девочки"): {"Тяжелая атлетика", "Хоккей", "Гандбол", "Водное поло"},
+        ("11–14", "Девочки"): {"Тяжелая атлетика", "Хоккей"},
+        ("15–17", "Девушки"): {"Хоккей", "Гандбол"},
+        ("18–25", "Женщины"): {"Хоккей"},
+        ("26–35", "Женщины"): {"Хоккей", "Тяжелая атлетика"},
+        ("35+", "Оба пола"): {"Тяжелая атлетика", "Хоккей", "Футбол", "Гандбол", "Водное поло"},
+    }
+
+    forbidden = forbidden_map.get((age_group, gender_label), set())
+    filtered = [rec for rec in recommendations if rec["sport"] not in forbidden]
+
+    # Если всё отфильтровалось — оставить хотя бы одну рекомендацию
+    if not filtered:
+        return recommendations[:1]
+
+    return filtered
+
+
 # ================ МАРШРУТЫ FLASK ================
 
 @app.route('/')
@@ -131,37 +182,45 @@ def analyze_text():
         
         print(f"🧠 Анализирую текст длиной {len(text)} символов...")
         
-        # Шаг 1: Определяем психологический тип
+        # Получаем возраст и пол из запроса
+        age_input = data.get('age')
+        gender_input = data.get('gender')
+
+        age = int(age_input) if age_input and str(age_input).isdigit() else None
+        gender = gender_input if gender_input in ("male", "female") else None
+
+        # Анализ текста
         personality_type, category_scores = analyze_personality(text)
-        print(f"📊 Определен тип личности: {personality_type}")
-        
-        # Шаг 2: Получаем рекомендации
         recommendations = get_sport_recommendations(personality_type, category_scores)
-        
-        # Шаг 3: Формируем ответ
-        main_recommendation = recommendations[0]
-        
-        additional_recommendations = []
-        if len(recommendations) > 1:
-            for i in range(1, len(recommendations)):
-                additional_recommendations.append({
-                    "sport": recommendations[i]["sport"],
-                    "confidence": recommendations[i]["confidence"]
-                })
-        
+
+        # Применяем фильтр по возрасту и полу
+        filtered_recommendations = filter_sports_by_age_gender(recommendations, age, gender)
+
+        # Формируем ответ
+        main_recommendation = filtered_recommendations[0]
+        additional_recommendations = [
+            {"sport": rec["sport"], "confidence": rec["confidence"]}
+            for rec in filtered_recommendations[1:]
+        ]
+
+        reason_text = main_recommendation["reason"]
+        if age is not None and gender is not None:
+            reason_text += " (Рекомендация адаптирована под возраст и пол.)"
+
         return jsonify({
             "success": True,
             "sport": main_recommendation["sport"],
             "confidence": main_recommendation["confidence"],
-            "reason": main_recommendation["reason"],
+            "reason": reason_text,
             "personality_type": personality_type,
             "additional_recommendations": additional_recommendations,
-            "analysis_method": "Психологический анализ на основе ключевых характеристик"
+            "analysis_method": "Психологический анализ + демографическая фильтрация"
         })
 
     except Exception as e:
         print(f"❌ Ошибка в /api/analyze: {e}")
         return jsonify({"error": "Произошла ошибка при анализе текста. Попробуйте снова."}), 500
+
 
 # ================ ЗАПУСК СЕРВЕРА ================
 

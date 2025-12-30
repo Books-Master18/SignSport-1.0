@@ -18,10 +18,14 @@ async function runAnalysis() {
 
     try {
         const response = await fetch("/api/analyze", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ text: text })
-        });
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        text: text,
+        age: document.getElementById("age")?.value || null,
+        gender: document.getElementById("gender")?.value || null
+    })
+});
 
         const data = await response.json();
 
