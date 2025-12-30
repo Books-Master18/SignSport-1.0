@@ -426,11 +426,29 @@ footer {
   display: flex;
   align-items: center; 
   justify-content: center;
-  gap: 6px;
+  gap: 15px;
   margin: 80px auto;
   width: 100%;
   max-width: 1000px;
   padding: 0 15px;
+  position: relative;
+}
+
+/* Стили для меток пола и возраста */
+.demo-labels {
+  position: absolute;
+  top: 15px; /* ← внутри карточки, не выше границы */
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 16px;
+  color: #496F94;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 6px 12px;
+  border-radius: 8px;
+  z-index: 10;
 }
 
 /* ------ счетчик ---- */
@@ -448,9 +466,9 @@ footer {
 /* ----- Сам блок карусели ----- */
 .carousel {
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
   min-width: 50px;
-  height: 400px;
+  height: 440px;
   position: relative;
   overflow: hidden;
   border: 1px solid #ccc;
@@ -461,10 +479,10 @@ footer {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
-/* ——— Каждый текст ——— */
+/* ---- Каждый текст ---- */
 .review {
   position: absolute;
-  top: 40px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
@@ -477,7 +495,7 @@ footer {
   font-size: 18px;
   line-height: 1.6;
   text-align: center;
-  padding: 0 10px;
+  padding: 60px 20px 20px;
   box-sizing: border-box;
   /* Добавим прокрутку, если вдруг не влезет */
   overflow-y: auto;
@@ -488,6 +506,7 @@ footer {
   -webkit-user-select: text; /* для Safari */
   pointer-events: none;
 }
+
 
 .review p {
   margin: 0;

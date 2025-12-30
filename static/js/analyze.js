@@ -1,3 +1,5 @@
+//Отправка запроса
+
 async function runAnalysis() {
     const text = document.getElementById("reportInput").value.trim();
     if (!text) {

@@ -1,3 +1,4 @@
+//Карусель
 // Когда страница полностью загрузилась — запускаем карусель
 document.addEventListener('DOMContentLoaded', () => {
 

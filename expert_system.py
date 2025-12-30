@@ -1,3 +1,5 @@
+#Flask-сервер
+
 from flask import Flask, request, jsonify, render_template
 import os
 
@@ -169,7 +171,7 @@ def home():
 
 @app.route('/analyze')
 def analyze_page():
-    return render_template('neural_network.html')
+    return render_template('program.html')
 
 @app.route('/api/analyze', methods=['POST'])
 def analyze_text():
