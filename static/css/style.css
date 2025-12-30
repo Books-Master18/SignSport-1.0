@@ -427,7 +427,7 @@ footer {
   align-items: center; 
   justify-content: center;
   gap: 15px;
-  margin: 80px auto;
+  margin: 30px auto;
   width: 100%;
   max-width: 1000px;
   padding: 0 15px;
@@ -437,7 +437,7 @@ footer {
 /* Стили для меток пола и возраста */
 .demo-labels {
   position: absolute;
-  top: 15px; /* ← внутри карточки, не выше границы */
+  top: 15px;
   left: 20px;
   right: 20px;
   display: flex;
@@ -454,7 +454,7 @@ footer {
 /* ------ счетчик ---- */
 
 .carousel-counter {
-  margin-top: 15px;
+  margin: 20px auto;
   font-size: 16px;
   color: #4682A9;
   font-weight: 600;
