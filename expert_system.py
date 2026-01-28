@@ -1,3 +1,67 @@
+@app.route('/api/analyze', methods=['POST'])
+def analyze_text():
+    try:
+        data = request.get_json()
+        text = data.get('text', '').strip()
+        
+        if not text:
+            return jsonify({"error": "Пожалуйста, введите описание характера."}), 400
+        
+        # Получаем возраст и пол из запроса
+        age_input = data.get('age')
+        gender_input = data.get('gender')
+
+        print(f"\n{'='*50}")
+        print(f"📥 Получен запрос:")
+        print(f"   Текст: {text[:50]}...")
+        print(f"   Возраст: {age_input} (тип: {type(age_input)})")
+        print(f"   Пол: {gender_input} (тип: {type(gender_input)})")
+        
+        age = int(age_input) if age_input and str(age_input).isdigit() else None
+        gender = gender_input if gender_input in ("male", "female") else None
+
+        print(f"   → Обработано: возраст={age}, пол={gender}")
+        
+        # Анализ текста
+        personality_type, category_scores = analyze_personality(text)
+        print(f"   → Тип личности: {personality_type}")
+        
+        recommendations = get_sport_recommendations(personality_type, category_scores)
+        print(f"   → Рекомендации до фильтрации: {[r['sport'] for r in recommendations]}")
+
+        # Применяем фильтр по возрасту и полу
+        filtered_recommendations = filter_sports_by_age_gender(recommendations, age, gender)
+        print(f"   → Рекомендации после фильтрации: {[r['sport'] for r in filtered_recommendations]}")
+        print(f"{'='*50}\n")
+
+        # Формируем ответ
+        main_recommendation = filtered_recommendations[0]
+        additional_recommendations = [
+            {"sport": rec["sport"], "confidence": rec["confidence"]}
+            for rec in filtered_recommendations[1:]
+        ]
+
+        reason_text = main_recommendation["reason"]
+        if age is not None and gender is not None:
+            reason_text += " (Рекомендация адаптирована под возраст и пол.)"
+
+        return jsonify({
+            "success": True,
+            "sport": main_recommendation["sport"],
+            "confidence": main_recommendation["confidence"],
+            "reason": reason_text,
+            "personality_type": personality_type,
+            "additional_recommendations": additional_recommendations,
+            "analysis_method": "Психологический анализ + демографическая фильтрация"
+        })
+
+    except Exception as e:
+        print(f"❌ Ошибка в /api/analyze: {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": "Произошла ошибка при анализе текста. Попробуйте снова."}), 500
+    
+    
 #Flask-сервер
 
 from flask import Flask, request, jsonify, render_template

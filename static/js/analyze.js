@@ -1,9 +1,22 @@
-//Отправка запроса
-
+// Анализ и отправка запроса на сервер
 async function runAnalysis() {
     const text = document.getElementById("reportInput").value.trim();
+    const age = document.getElementById("age")?.value;
+    const gender = document.getElementById("gender")?.value;
+    
+    // === ВАЛИДАЦИЯ ВХОДНЫХ ДАННЫХ ===
     if (!text) {
         alert("Пожалуйста, введите описание характера");
+        return;
+    }
+    
+    if (!age || age < 7 || age > 100) {
+        alert("Пожалуйста, введите корректный возраст (от 7 до 100 лет)");
+        return;
+    }
+    
+    if (!gender) {
+        alert("Пожалуйста, выберите пол");
         return;
     }
 
@@ -11,29 +24,35 @@ async function runAnalysis() {
     const resultDiv = document.getElementById("result");
     const originalBtnText = btn.textContent;
     
+    // Блокируем кнопку во время анализа
     btn.disabled = true;
     btn.textContent = "Анализ...";
     
     // Очищаем предыдущие результаты
     resultDiv.style.display = "none";
     resultDiv.innerHTML = "";
+    resultDiv.style.opacity = "0";
 
     try {
         const response = await fetch("/api/analyze", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-        text: text,
-        age: document.getElementById("age")?.value || null,
-        gender: document.getElementById("gender")?.value || null
-    })
-});
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                text: text,
+                age: parseInt(age), // Преобразуем в число
+                gender: gender
+            })
+        });
 
         const data = await response.json();
 
         if (data.success) {
-            // Создаем HTML для результатов
+            // Создаем красивый HTML для результатов
             let resultHTML = `
+                <div class="result-header">
+                    <span class="checkmark">✅</span>
+                    <strong>Рекомендация готова!</strong>
+                </div>
                 <div class="result-container">
                     <h3>🎯 Основная рекомендация:</h3>
                     <div class="main-recommendation">
@@ -70,32 +89,46 @@ async function runAnalysis() {
             resultDiv.innerHTML = resultHTML;
             resultDiv.style.display = "block";
             
-            // Плавное появление
+            // Плавное появление результата
             setTimeout(() => {
+                resultDiv.style.transition = "opacity 0.5s ease";
                 resultDiv.style.opacity = "1";
-            }, 100);
+            }, 50);
             
         } else {
+            // Красивое сообщение об ошибке
             resultDiv.innerHTML = `
+                <div class="result-header">
+                    <span style="font-size: 24px; margin-right: 10px;">⚠️</span>
+                    <strong>Ошибка анализа</strong>
+                </div>
                 <div class="error-message">
-                    <p style="color: #c0392b; padding: 15px; background: #f8d7da; border-radius: 5px;">
-                        ❌ Ошибка: ${data.error}
+                    <p style="color: #c0392b; padding: 15px; background: #f8d7da; border-radius: 5px; margin: 15px 0;">
+                        ❌ ${data.error || "Неизвестная ошибка"}
                     </p>
                 </div>
             `;
             resultDiv.style.display = "block";
+            resultDiv.style.opacity = "1";
         }
     } catch (error) {
+        // Ошибка подключения к серверу
         resultDiv.innerHTML = `
+            <div class="result-header">
+                <span style="font-size: 24px; margin-right: 10px;">⚠️</span>
+                <strong>Ошибка подключения</strong>
+            </div>
             <div class="error-message">
-                <p style="color: #c0392b; padding: 15px; background: #f8d7da; border-radius: 5px;">
+                <p style="color: #c0392b; padding: 15px; background: #f8d7da; border-radius: 5px; margin: 15px 0;">
                     ❌ Не удалось подключиться к серверу. Убедитесь, что он запущен.
                 </p>
             </div>
         `;
         resultDiv.style.display = "block";
+        resultDiv.style.opacity = "1";
         console.error("Ошибка запроса:", error);
     } finally {
+        // Возвращаем кнопку в исходное состояние
         btn.disabled = false;
         btn.textContent = originalBtnText;
     }
